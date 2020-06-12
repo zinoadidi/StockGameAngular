@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {StockEventEmitterService} from '../stocks/shared/stock-event-emitter.service';
 
 @Component({
   selector: 'app-day-manager',
@@ -8,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class DayManagerComponent implements OnInit {
   currentDay: Date;
 
-  constructor() { }
+  constructor( private eventEmitterService: StockEventEmitterService ) { }
 
   ngOnInit(): void {
     this.currentDay = new Date();
@@ -21,5 +22,7 @@ export class DayManagerComponent implements OnInit {
 
     // Force date update in angular dorm
     this.currentDay = new Date(newDay);
+    // trigger stock component update
+    this.eventEmitterService.onDayChange();
   }
 }

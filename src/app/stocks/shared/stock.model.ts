@@ -1,5 +1,5 @@
 export interface Stock {
-  hasChangedPositively: boolean;
+  initialPrice: number;
   symbol: string;
   name: string;
   price: number;

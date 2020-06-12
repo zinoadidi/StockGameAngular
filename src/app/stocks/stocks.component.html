@@ -8,21 +8,26 @@
       <tr>
         <th scope="col">#</th>
         <th scope="col">Index</th>
-        <th scope="col">Value</th>
+        <th scope="col">Initial Value</th>
+        <th scope="col">Current Value</th>
         <th scope="col">Change Net / %</th>
       </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let stock of stocks; index as i">
+      <tr *ngFor="let stock of currentStocks; index as i">
         <th scope="row">{{ i + 1 }}</th>
 
         <td>{{stock.name}} ({{stock.symbol}})</td>
-        <td>{{stock.price}}</td>
+        <td>{{stock.initialPrice | currency: 'USD'}}</td>
+        <td>{{stock.price | currency: 'USD'}}</td>
         <td class="change-area">
-            <span id="change-figure">0 </span>
-            <span id="arrow-up" *ngIf="stock.hasChangedPositively === true">&#9652;</span>
-            <span id="arrow-down" *ngIf="stock.hasChangedPositively === false">&#9662;</span>
-            <span id="change-percent">0.0%</span>
+          <span class="price-change-indicator">
+            <span id="arrow-up" *ngIf="stock.price > stock.initialPrice" class="alert-success">&#9652;</span>
+            <span id="arrow-down" *ngIf="stock.price < stock.initialPrice" class="alert-danger">&#9652;</span>
+            <span id="arrow-no-change" *ngIf="stock.price === stock.initialPrice" class="alert-primary">&#8212;</span>
+          </span>
+          <span id="change-figure">{{stock.initialPrice - stock.price | currency:'USD'}}, </span>
+          <span id="change-percent">{{calculatePercentage(stock.initialPrice, stock.price)  | number: '0.0-1' | percent}}</span>
         </td>
       </tr>
       </tbody>
