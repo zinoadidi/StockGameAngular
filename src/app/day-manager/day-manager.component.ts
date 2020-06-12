@@ -7,21 +7,23 @@ import {StockEventEmitterService} from '../stocks/shared/stock-event-emitter.ser
   styleUrls: ['./day-manager.component.css']
 })
 export class DayManagerComponent implements OnInit {
-  currentDay: Date;
+  currentDay: number;
+  currentDate: Date;
 
   constructor( private eventEmitterService: StockEventEmitterService ) { }
 
   ngOnInit(): void {
-    this.currentDay = new Date();
+    this.currentDate = new Date();
+    this.currentDay = 1;
   }
 
   forwardTime(): void{
-    const newDay: Date = this.currentDay;
-    const nextDay: number = this.currentDay.getDate() + 1;
+    const newDay: Date = this.currentDate;
+    const nextDay: number = this.currentDate.getDate() + 1;
     newDay.setDate(nextDay);
-
+    this.currentDay++;
     // Force date update in angular dorm
-    this.currentDay = new Date(newDay);
+    this.currentDate = new Date(newDay);
     // trigger stock component update
     this.eventEmitterService.onDayChange();
   }

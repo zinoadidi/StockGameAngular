@@ -10,7 +10,8 @@
         <th scope="col">Index</th>
         <th scope="col">Initial Value</th>
         <th scope="col">Current Value</th>
-        <th scope="col">Change Net / %</th>
+        <th scope="col">Absolute change</th>
+        <th scope="col">Percent change</th>
       </tr>
       </thead>
       <tbody>
@@ -26,7 +27,9 @@
             <span id="arrow-down" *ngIf="stock.price < stock.initialPrice" class="alert-danger">&#9662;</span>
             <span id="arrow-no-change" *ngIf="stock.price === stock.initialPrice" class="alert-primary">&#8212;</span>
           </span>
-          <span id="change-figure">{{calculatePriceDifference(stock.initialPrice, stock.price) | currency:'USD'}} / </span>
+          <span id="absolute-change">{{calculatePriceDifference(stock.initialPrice, stock.price) | currency:'USD'}} </span>
+        </td>
+        <td class="percent-change">
           <span id="change-percent">{{calculatePercentage(stock.initialPrice, stock.price)}} %</span>
         </td>
       </tr>
