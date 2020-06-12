@@ -38,7 +38,6 @@ export class StocksComponent implements OnInit {
   calculatePercentage(initialPrice: number, newPrice: number): number{
     const priceDifference = Math.abs(this.calculatePriceDifference(initialPrice, newPrice));
     const percentage = (priceDifference / initialPrice) * 100;
-    console.log(Number(percentage.toFixed(2)));
     return Number(percentage.toFixed(2));
   }
 
