@@ -23,11 +23,11 @@
         <td class="change-area">
           <span class="price-change-indicator">
             <span id="arrow-up" *ngIf="stock.price > stock.initialPrice" class="alert-success">&#9652;</span>
-            <span id="arrow-down" *ngIf="stock.price < stock.initialPrice" class="alert-danger">&#9652;</span>
+            <span id="arrow-down" *ngIf="stock.price < stock.initialPrice" class="alert-danger">&#9662;</span>
             <span id="arrow-no-change" *ngIf="stock.price === stock.initialPrice" class="alert-primary">&#8212;</span>
           </span>
-          <span id="change-figure">{{stock.initialPrice - stock.price | currency:'USD'}}, </span>
-          <span id="change-percent">{{calculatePercentage(stock.initialPrice, stock.price)  | number: '0.0-1' | percent}}</span>
+          <span id="change-figure">{{calculatePriceDifference(stock.initialPrice, stock.price) | currency:'USD'}} / </span>
+          <span id="change-percent">{{calculatePercentage(stock.initialPrice, stock.price)}} %</span>
         </td>
       </tr>
       </tbody>

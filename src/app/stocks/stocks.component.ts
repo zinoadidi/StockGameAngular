@@ -35,7 +35,15 @@ export class StocksComponent implements OnInit {
     this.currentStocks = newStocks;
   }
 
-  calculatePercentage(fN: number, sN: number): number{
-    return 100 * Math.abs( (fN - sN) / ( (fN + sN) / 2 ));
+  calculatePercentage(initialPrice: number, newPrice: number): number{
+    const priceDifference = this.calculatePriceDifference(initialPrice, newPrice);
+    const percentage = (priceDifference / initialPrice) * 100;
+    console.log(Number(percentage.toFixed(2)));
+    return Number(percentage.toFixed(2));
+  }
+
+  calculatePriceDifference(initialPrice: number, newPrice: number): number {
+    // ensure number is positive so that negative / positive indicator can be controlled form UI
+    return Math.abs(initialPrice - newPrice);
   }
 }
