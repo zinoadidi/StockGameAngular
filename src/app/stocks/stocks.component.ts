@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {Stock} from './shared/stock.model';
-import {StocksService} from './shared/stocks.service';
-import {StockEventEmitterService} from './shared/stock-event-emitter.service';
+import {Stock} from '../shared/stock.model';
+import {StocksService} from '../shared/stocks.service';
+import {StockEventEmitterService} from '../shared/stock-event-emitter.service';
 
 @Component({
   selector: 'app-stocks',

@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {StockEventEmitterService} from '../stocks/shared/stock-event-emitter.service';
+import {StockEventEmitterService} from '../shared/stock-event-emitter.service';
 
 @Component({
   selector: 'app-day-manager',
